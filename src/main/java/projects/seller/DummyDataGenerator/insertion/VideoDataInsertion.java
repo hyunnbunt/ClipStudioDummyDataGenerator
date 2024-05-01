@@ -22,11 +22,11 @@ public class VideoDataInsertion {
             int duration = RandomNumberGenerator.getRandomNumber(0, 3600); // maximum duration : 1 hour
             int uploaderId = RandomNumberGenerator.getRandomNumber(1, numOfUploaders);
             Timestamp createdDate = RandomTimestampGenerator.getRandomDate();
-            values.add(new Object[]{title, duration, uploaderId, createdDate});
+            values.add(new Object[]{title, duration, uploaderId, createdDate, 0, 0});
         }
         // Uses JdbcTemplate's batchUpdate operation to bulk load data
         jdbcTemplate.batchUpdate(
-                "INSERT INTO videos(title, duration, uploader_number, created_date) " +
-                        "VALUES (?,?,?,?)", values);
+                "INSERT INTO videos(title, duration, uploader_number, created_date, total_views, daily_views) " +
+                        "VALUES (?,?,?,?,?,?)", values);
     }
 }

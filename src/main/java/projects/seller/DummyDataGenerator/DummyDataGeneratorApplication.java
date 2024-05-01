@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import projects.seller.DummyDataGenerator.insertion.AdvertisementDataInsertion;
 import projects.seller.DummyDataGenerator.insertion.UserDataInsertion;
+import projects.seller.DummyDataGenerator.insertion.VideoDailyViewsUpdate;
 import projects.seller.DummyDataGenerator.insertion.VideoDataInsertion;
 
 @SpringBootApplication
@@ -26,5 +27,6 @@ public class DummyDataGeneratorApplication implements CommandLineRunner {
 		UserDataInsertion.insertRandomUsers(numOfUploaders, jdbcTemplate);
 		VideoDataInsertion.insertRandomVideos(numOfVideos, numOfUploaders, jdbcTemplate);
 		AdvertisementDataInsertion.insertAdIns(numOfVideos, jdbcTemplate);
+		VideoDailyViewsUpdate.updateDailyViewsRandomly(numOfVideos, jdbcTemplate);
 	}
 }
