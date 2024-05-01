@@ -8,9 +8,9 @@ import java.util.List;
 
 public class UserDataInsertion {
     public static void insertRandomUsers(int num, JdbcTemplate jdbcTemplate) {
-//        jdbcTemplate.execute("DROP TABLE IF EXISTS users");
-//        jdbcTemplate.execute("CREATE TABLE users(" +
-//                "id SERIAL, username VARCHAR(255), email NVARCHAR(320), role ENUM"); // need to add duration
+        jdbcTemplate.execute("DROP TABLE IF EXISTS users");
+        jdbcTemplate.execute("CREATE TABLE users(" +
+                "number SERIAL, username VARCHAR(255), email NVARCHAR(320), role ENUM, "); // need to add duration
 
         // Split up the array of whole names into an array of first/last names
         List<Object[]> values = new LinkedList<>();
