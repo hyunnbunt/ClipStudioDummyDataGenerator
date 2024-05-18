@@ -33,13 +33,13 @@ public class VideoDailyViewsUpdate {
         List<Object[]> values = new LinkedList<>();
 
         for (int i = 0; i < numOfVideos; i++) {
-            int randomDailyViews = RandomNumberGenerator.getRandomNumber(0, (int) Math.pow(10, 5));
+            int randomDailyViews = RandomNumberGenerator.getRandomNumber(0, (int) Math.pow(10, 7));
             values.add(new Object[]{randomDailyViews, i});
             log.info(randomDailyViews + ": views, " + i + ": videoNumber");
         }
         // Uses JdbcTemplate's batchUpdate operation to bulk load data
         jdbcTemplate.batchUpdate(
-                "UPDATE videos SET daily_views = ? WHERE number = ?", values);
+                "UPDATE videos SET temp_daily_views = ? WHERE number = ?", values);
 
     }
 }

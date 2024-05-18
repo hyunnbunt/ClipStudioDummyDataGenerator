@@ -14,7 +14,7 @@ public class AdvertisementDailyViewsUpdate {
 
         for (int i = 1; i <= numOfVideos; i++) {
             Long videoDailyViews = jdbcTemplate.queryForObject(
-                    "SELECT daily_views FROM videos WHERE number = ?", Long.class, i);
+                    "SELECT temp_daily_views FROM videos WHERE number = ?", Long.class, i);
             List<Map<String, Object>> advertisementList = jdbcTemplate.queryForList(
                     "SELECT number FROM advertisements WHERE video_number = ?", i);
             Long currAdvertisementDailyViews = videoDailyViews;
@@ -28,7 +28,7 @@ public class AdvertisementDailyViewsUpdate {
                 values.add(new Object[]{currAdvertisementDailyViews, advertisementNumber});
             }
             jdbcTemplate.batchUpdate(
-                    "UPDATE advertisements SET daily_views = ? WHERE number = ?", values);
+                    "UPDATE advertisements SET temp_daily_views = ? WHERE number = ?", values);
         }
     }
 }

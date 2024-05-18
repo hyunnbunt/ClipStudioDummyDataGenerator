@@ -18,12 +18,12 @@ public class DummyDataGeneratorApplication implements CommandLineRunner {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public void run(String... strings) throws Exception {
-		int numOfUploaders = 100;
-		int numOfVideos = 100;
+	public void run(String... strings) throws Exception { // strings 사용해서 터미널에서 명령
+		int numOfUploaders = 3;
+		int numOfVideos = 10;
 		UserDataInsertion.insertRandomUsers(numOfUploaders, jdbcTemplate);
 		VideoDataInsertion.insertRandomVideos(numOfVideos, numOfUploaders, jdbcTemplate);
-		AdvertisementDataInsertion.insertAdIns(numOfVideos, jdbcTemplate);
+		AdvertisementDataInsertion.insertAdvertisements(numOfVideos, jdbcTemplate);
 		VideoDailyViewsUpdate.updateDailyViewsRandomly(numOfVideos, jdbcTemplate);
 		AdvertisementDailyViewsUpdate.updateDailyViews(numOfVideos, jdbcTemplate);
 	}
